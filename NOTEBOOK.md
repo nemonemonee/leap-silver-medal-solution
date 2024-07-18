@@ -1,10 +1,19 @@
-# LEAP - Atmospheric Physics using AI (ClimSim) Kaggle Competition Solution
+# [47th place solution] Pytorch Lightning Framework + Column-wise Ensemble
 
-Our solution utilizes the PyTorch Lightning framework for training. All model architectures are based on the transformer encoder. Rotary positional encoding proved effective. Data preparation involved normalization, log transformation, min-max scaling, and clamping. Post-processing employed a column-wise ensemble method. While KAN linear embedding did not improve the score, it contributed as one of the models in the ensemble. We used 90% of the data for training and the remaining 10% for validation.
+Congratulations to all participants! I learned a lot in the past few months and want to thank Kaggle and the hosts for organizing this competition. It has been a truly rewarding experience, and I am excited to share my solution with you all.
 
 ## Context
+
 * Bussiness context: <https://www.kaggle.com/competitions/leap-atmospheric-physics-ai-climsim/overview>
 * Data context: <https://www.kaggle.com/competitions/leap-atmospheric-physics-ai-climsim/data>
+
+## Code
+
+Open source code is available on [github repo](https://github.com/nemonemonee/leap-silver-medal-solution).
+
+## TLDR
+
+Our solution utilizes the PyTorch Lightning framework for training. All model architectures are based on the transformer encoder. Rotary positional encoding proved effective. Data preparation involved normalization, log transformation, min-max scaling, and clamping. Post-processing employed a column-wise ensemble method. While KAN linear embedding did not improve the score, it contributed as one of the models in the ensemble. We used 90% of the data for training and the remaining 10% for validation.
 
 ## Training - Pytorch Lightning Framework
 
@@ -80,23 +89,10 @@ for i in tqdm(range(num_targets)):
         preds_em[:, i] = sum(weight * preds[m][:, i] for m, weight in enumerate(best_weights))
 ```
 
-## References
-@misc{su2023roformerenhancedtransformerrotary,
-      title={RoFormer: Enhanced Transformer with Rotary Position Embedding}, 
-      author={Jianlin Su and Yu Lu and Shengfeng Pan and Ahmed Murtadha and Bo Wen and Yunfeng Liu},
-      year={2023},
-      eprint={2104.09864},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2104.09864}, 
-}
+## What didn't work
 
-@misc{liu2024kankolmogorovarnoldnetworks,
-      title={KAN: Kolmogorov-Arnold Networks}, 
-      author={Ziming Liu and Yixuan Wang and Sachin Vaidya and Fabian Ruehle and James Halverson and Marin Soljačić and Thomas Y. Hou and Max Tegmark},
-      year={2024},
-      eprint={2404.19756},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2404.19756}, 
-}
+We experimented with changing the linear output layer to a convolutional output layer and a KAN linear output layer. However, these modifications increased the likelihood of overfitting. Due to time constraints, we were unable to implement adequate regularization techniques to mitigate this issue effectively.
+
+## References
+[1] Su, J., Lu, Y., Pan, S., Murtadha, A., Wen, B., & Liu, Y. (2021, April 20). RoFormer: Enhanced Transformer with Rotary Position Embedding. arXiv.org. https://arxiv.org/abs/2104.09864
+[2] Liu, Z., Wang, Y., Vaidya, S., Ruehle, F., Halverson, J., Soljačić, M., Hou, T. Y., & Tegmark, M. (2024, April 30). KAN: Kolmogorov-Arnold Networks. arXiv.org. https://arxiv.org/abs/2404.19756
