@@ -85,14 +85,15 @@ for i in tqdm(range(num_targets)):
 ```
 
 ## References
-
+```
 @article{liu2024kan,
   title={KAN: Kolmogorov-Arnold Networks},
   author={Liu, Ziming and Wang, Yixuan and Vaidya, Sachin and Ruehle, Fabian and Halverson, James and Solja{\v{c}}i{\'c}, Marin and Hou, Thomas Y and Tegmark, Max},
   journal={arXiv preprint arXiv:2404.19756},
   year={2024}
 }
-
+```
+```
 @misc{su2021roformer,
     title   = {RoFormer: Enhanced Transformer with Rotary Position Embedding}, 
     author  = {Jianlin Su and Yu Lu and Shengfeng Pan and Bo Wen and Yunfeng Liu},
@@ -101,3 +102,4 @@ for i in tqdm(range(num_targets)):
     archivePrefix = {arXiv},
     primaryClass = {cs.CL}
 }
+```
