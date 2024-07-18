@@ -32,11 +32,15 @@ In our experiment, switching from the original positional encoding to [Rotary po
 
 ### Model Architectures - What we also tried
 
-<img src="images/jnet.png" alt="JNet Arch" width="500"/>
+<p align="center">
+    <img src="images/jnet.png" alt="JNet Arch" width="500"/>
+</p>
 
 Our JNet model architecture processes the input sequence of shape (B, 60, 25) through a series of Conv1d layers, each followed by GELU activation functions, to extract hierarchical features. The outputs of these layers are concatenated into a combined feature representation, an embedding. This embedding is enriched with Rotary Positional Encoding (RoPE) to provide positional information and is subsequently processed by a transformer encoder. Finally, a linear layer generates the output sequence of shape (B, 60, 14). 
 
-<img src="images/kf.png" alt="KAN former Arch" width="500"/>
+<p align="center">
+    <img src="images/kf.png" alt="KAN former Arch" width="500"/>
+</p>
 
 Our KANformer model architecture begins with an input sequence of shape (B, 60, 25) and applies a series of 60 [KAN](https://arxiv.org/abs/2404.19756) linear layers (25, 256) to each token of the sequence. These layers transform the input into an embedding of shape (B, 60, 256). This embedding is then processed by a transformer encoder to capture dependencies within the sequence. Finally, a linear layer generates the output sequence of shape (B, 60, 14). While KAN linear embedding did not improve the score, it contributed as one of the models in the ensemble.
 
@@ -81,22 +85,19 @@ for i in tqdm(range(num_targets)):
 ```
 
 ## References
-@misc{su2023roformerenhancedtransformerrotary,
-      title={RoFormer: Enhanced Transformer with Rotary Position Embedding}, 
-      author={Jianlin Su and Yu Lu and Shengfeng Pan and Ahmed Murtadha and Bo Wen and Yunfeng Liu},
-      year={2023},
-      eprint={2104.09864},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2104.09864}, 
+
+@article{liu2024kan,
+  title={KAN: Kolmogorov-Arnold Networks},
+  author={Liu, Ziming and Wang, Yixuan and Vaidya, Sachin and Ruehle, Fabian and Halverson, James and Solja{\v{c}}i{\'c}, Marin and Hou, Thomas Y and Tegmark, Max},
+  journal={arXiv preprint arXiv:2404.19756},
+  year={2024}
 }
 
-@misc{liu2024kankolmogorovarnoldnetworks,
-      title={KAN: Kolmogorov-Arnold Networks}, 
-      author={Ziming Liu and Yixuan Wang and Sachin Vaidya and Fabian Ruehle and James Halverson and Marin Soljačić and Thomas Y. Hou and Max Tegmark},
-      year={2024},
-      eprint={2404.19756},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2404.19756}, 
+@misc{su2021roformer,
+    title   = {RoFormer: Enhanced Transformer with Rotary Position Embedding}, 
+    author  = {Jianlin Su and Yu Lu and Shengfeng Pan and Bo Wen and Yunfeng Liu},
+    year    = {2021},
+    eprint  = {2104.09864},
+    archivePrefix = {arXiv},
+    primaryClass = {cs.CL}
 }

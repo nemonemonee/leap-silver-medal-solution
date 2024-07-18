@@ -41,11 +41,15 @@ In our experiment, switching from the original positional encoding to [Rotary po
 
 ### Model Architectures - What we also tried
 
-<img src="images/jnet.png" alt="JNet Arch" width="500"/>
+<p align="center">
+    <img src="images/jnet.png" alt="JNet Arch" width="500"/>
+</p>
 
 Our JNet model architecture processes the input sequence of shape (B, 60, 25) through a series of Conv1d layers, each followed by GELU activation functions, to extract hierarchical features. The outputs of these layers are concatenated into a combined feature representation, an embedding. This embedding is enriched with Rotary Positional Encoding (RoPE) to provide positional information and is subsequently processed by a transformer encoder. Finally, a linear layer generates the output sequence of shape (B, 60, 14). 
 
-<img src="images/kf.png" alt="KAN former Arch" width="500"/>
+<p align="center">
+    <img src="images/kf.png" alt="KAN former Arch" width="500"/>
+</p>
 
 Our KANformer model architecture begins with an input sequence of shape (B, 60, 25) and applies a series of 60 [KAN](https://arxiv.org/abs/2404.19756) linear layers (25, 256) to each token of the sequence. These layers transform the input into an embedding of shape (B, 60, 256). This embedding is then processed by a transformer encoder to capture dependencies within the sequence. Finally, a linear layer generates the output sequence of shape (B, 60, 14). While KAN linear embedding did not improve the score, it contributed as one of the models in the ensemble.
 
@@ -94,5 +98,7 @@ for i in tqdm(range(num_targets)):
 We experimented with changing the linear output layer to a convolutional output layer and a KAN linear output layer. However, these modifications increased the likelihood of overfitting. Due to time constraints, we were unable to implement adequate regularization techniques to mitigate this issue effectively.
 
 ## References
+
 [1] Su, J., Lu, Y., Pan, S., Murtadha, A., Wen, B., & Liu, Y. (2021, April 20). RoFormer: Enhanced Transformer with Rotary Position Embedding. arXiv.org. https://arxiv.org/abs/2104.09864
+
 [2] Liu, Z., Wang, Y., Vaidya, S., Ruehle, F., Halverson, J., Soljačić, M., Hou, T. Y., & Tegmark, M. (2024, April 30). KAN: Kolmogorov-Arnold Networks. arXiv.org. https://arxiv.org/abs/2404.19756
