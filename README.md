@@ -85,7 +85,7 @@ for i in tqdm(range(num_targets)):
 ```
 
 ## References
-```
+```bibtex
 @article{liu2024kan,
   title={KAN: Kolmogorov-Arnold Networks},
   author={Liu, Ziming and Wang, Yixuan and Vaidya, Sachin and Ruehle, Fabian and Halverson, James and Solja{\v{c}}i{\'c}, Marin and Hou, Thomas Y and Tegmark, Max},
@@ -93,7 +93,7 @@ for i in tqdm(range(num_targets)):
   year={2024}
 }
 ```
-```
+```bibtex
 @misc{su2021roformer,
     title   = {RoFormer: Enhanced Transformer with Rotary Position Embedding}, 
     author  = {Jianlin Su and Yu Lu and Shengfeng Pan and Bo Wen and Yunfeng Liu},
